@@ -1,0 +1,101 @@
+Order ID,Date,Customer,Region,Category,Product,Quantity,Unit Price,Total Sales,Profit
+1001,2024-01-05,Acme Corp,North,Electronics,Laptop Pro,2,1200.00,2400.00,480.00
+1002,2024-01-08,Beta Ltd,South,Furniture,Office Chair,5,350.00,1750.00,262.50
+1003,2024-01-12,Gamma Inc,East,Electronics,Smartphone X,10,800.00,8000.00,1600.00
+1004,2024-01-15,Delta Co,West,Clothing,Winter Jacket,8,120.00,960.00,192.00
+1005,2024-01-18,Epsilon LLC,North,Electronics,Tablet Z,4,600.00,2400.00,480.00
+1006,2024-01-22,Zeta Corp,South,Office Supplies,Desk Organizer,20,45.00,900.00,270.00
+1007,2024-01-25,Eta Ltd,East,Furniture,Standing Desk,3,750.00,2250.00,337.50
+1008,2024-01-28,Theta Inc,West,Electronics,Headphones,15,200.00,3000.00,750.00
+1009,2024-02-02,Iota Co,North,Clothing,Business Suit,6,280.00,1680.00,336.00
+1010,2024-02-05,Kappa LLC,South,Electronics,Laptop Pro,3,1200.00,3600.00,720.00
+1011,2024-02-08,Lambda Corp,East,Office Supplies,Printer Ink,25,30.00,750.00,225.00
+1012,2024-02-12,Mu Ltd,West,Furniture,Bookshelf,4,180.00,720.00,144.00
+1013,2024-02-15,Nu Inc,North,Electronics,Smartphone X,7,800.00,5600.00,1120.00
+1014,2024-02-18,Xi Co,South,Clothing,Summer Dress,12,85.00,1020.00,204.00
+1015,2024-02-22,Omicron LLC,East,Electronics,Tablet Z,6,600.00,3600.00,720.00
+1016,2024-02-25,Pi Corp,West,Office Supplies,Stapler,30,15.00,450.00,135.00
+1017,2024-02-28,Rho Ltd,North,Furniture,Office Chair,8,350.00,2800.00,420.00
+1018,2024-03-03,Sigma Inc,South,Electronics,Headphones,20,200.00,4000.00,1000.00
+1019,2024-03-07,Tau Co,East,Clothing,Casual Shoes,14,95.00,1330.00,266.00
+1020,2024-03-11,Upsilon LLC,West,Electronics,Laptop Pro,4,1200.00,4800.00,960.00
+1021,2024-03-14,Phi Corp,North,Office Supplies,Paper Ream,50,8.00,400.00,120.00
+1022,2024-03-18,Chi Ltd,South,Furniture,Standing Desk,5,750.00,3750.00,562.50
+1023,2024-03-21,Psi Inc,East,Electronics,Smartphone X,9,800.00,7200.00,1440.00
+1024,2024-03-25,Omega Co,West,Clothing,Winter Jacket,11,120.00,1320.00,264.00
+1025,2024-03-28,Alpha LLC,North,Electronics,Tablet Z,8,600.00,4800.00,960.00
+1026,2024-04-02,Acme Corp,South,Office Supplies,Desk Organizer,15,45.00,675.00,202.50
+1027,2024-04-05,Beta Ltd,East,Furniture,Bookshelf,6,180.00,1080.00,216.00
+1028,2024-04-09,Gamma Inc,West,Electronics,Headphones,18,200.00,3600.00,900.00
+1029,2024-04-12,Delta Co,North,Clothing,Business Suit,9,280.00,2520.00,504.00
+1030,2024-04-16,Epsilon LLC,South,Electronics,Laptop Pro,5,1200.00,6000.00,1200.00
+1031,2024-04-19,Zeta Corp,East,Office Supplies,Printer Ink,35,30.00,1050.00,315.00
+1032,2024-04-23,Eta Ltd,West,Furniture,Office Chair,7,350.00,2450.00,367.50
+1033,2024-04-26,Theta Inc,North,Electronics,Smartphone X,11,800.00,8800.00,1760.00
+1034,2024-04-30,Iota Co,South,Clothing,Summer Dress,20,85.00,1700.00,340.00
+1035,2024-05-03,Kappa LLC,East,Electronics,Tablet Z,5,600.00,3000.00,600.00
+1036,2024-05-07,Lambda Corp,West,Office Supplies,Stapler,40,15.00,600.00,180.00
+1037,2024-05-10,Mu Ltd,North,Furniture,Standing Desk,4,750.00,3000.00,450.00
+1038,2024-05-14,Nu Inc,South,Electronics,Headphones,22,200.00,4400.00,1100.00
+1039,2024-05-17,Xi Co,East,Clothing,Casual Shoes,16,95.00,1520.00,304.00
+1040,2024-05-21,Omicron LLC,West,Electronics,Laptop Pro,6,1200.00,7200.00,1440.00
+1041,2024-05-24,Pi Corp,North,Office Supplies,Paper Ream,60,8.00,480.00,144.00
+1042,2024-05-28,Rho Ltd,South,Furniture,Bookshelf,9,180.00,1620.00,324.00
+1043,2024-05-31,Sigma Inc,East,Electronics,Smartphone X,13,800.00,10400.00,2080.00
+1044,2024-06-04,Tau Co,West,Clothing,Winter Jacket,7,120.00,840.00,168.00
+1045,2024-06-07,Upsilon LLC,North,Electronics,Tablet Z,10,600.00,6000.00,1200.00
+1046,2024-06-11,Phi Corp,South,Office Supplies,Desk Organizer,25,45.00,1125.00,337.50
+1047,2024-06-14,Chi Ltd,East,Furniture,Office Chair,10,350.00,3500.00,525.00
+1048,2024-06-18,Psi Inc,West,Electronics,Headphones,28,200.00,5600.00,1400.00
+1049,2024-06-21,Omega Co,North,Clothing,Business Suit,8,280.00,2240.00,448.00
+1050,2024-06-25,Alpha LLC,South,Electronics,Laptop Pro,7,1200.00,8400.00,1680.00
+1051,2024-07-02,Acme Corp,East,Office Supplies,Printer Ink,40,30.00,1200.00,360.00
+1052,2024-07-05,Beta Ltd,West,Furniture,Standing Desk,6,750.00,4500.00,675.00
+1053,2024-07-09,Gamma Inc,North,Electronics,Smartphone X,15,800.00,12000.00,2400.00
+1054,2024-07-12,Delta Co,South,Clothing,Summer Dress,18,85.00,1530.00,306.00
+1055,2024-07-16,Epsilon LLC,East,Electronics,Tablet Z,9,600.00,5400.00,1080.00
+1056,2024-07-19,Zeta Corp,West,Office Supplies,Stapler,50,15.00,750.00,225.00
+1057,2024-07-23,Eta Ltd,North,Furniture,Bookshelf,12,180.00,2160.00,432.00
+1058,2024-07-26,Theta Inc,South,Electronics,Headphones,30,200.00,6000.00,1500.00
+1059,2024-07-30,Iota Co,East,Clothing,Casual Shoes,20,95.00,1900.00,380.00
+1060,2024-08-02,Kappa LLC,West,Electronics,Laptop Pro,8,1200.00,9600.00,1920.00
+1061,2024-08-06,Lambda Corp,North,Office Supplies,Paper Ream,70,8.00,560.00,168.00
+1062,2024-08-09,Mu Ltd,South,Furniture,Office Chair,12,350.00,4200.00,630.00
+1063,2024-08-13,Nu Inc,East,Electronics,Smartphone X,17,800.00,13600.00,2720.00
+1064,2024-08-16,Xi Co,West,Clothing,Winter Jacket,14,120.00,1680.00,336.00
+1065,2024-08-20,Omicron LLC,North,Electronics,Tablet Z,11,600.00,6600.00,1320.00
+1066,2024-08-23,Pi Corp,South,Office Supplies,Desk Organizer,30,45.00,1350.00,405.00
+1067,2024-08-27,Rho Ltd,East,Furniture,Standing Desk,7,750.00,5250.00,787.50
+1068,2024-08-30,Sigma Inc,West,Electronics,Headphones,35,200.00,7000.00,1750.00
+1069,2024-09-03,Tau Co,North,Clothing,Business Suit,11,280.00,3080.00,616.00
+1070,2024-09-06,Upsilon LLC,South,Electronics,Laptop Pro,9,1200.00,10800.00,2160.00
+1071,2024-09-10,Phi Corp,East,Office Supplies,Printer Ink,45,30.00,1350.00,405.00
+1072,2024-09-13,Chi Ltd,West,Furniture,Bookshelf,15,180.00,2700.00,540.00
+1073,2024-09-17,Psi Inc,North,Electronics,Smartphone X,19,800.00,15200.00,3040.00
+1074,2024-09-20,Omega Co,South,Clothing,Summer Dress,22,85.00,1870.00,374.00
+1075,2024-09-24,Alpha LLC,East,Electronics,Tablet Z,12,600.00,7200.00,1440.00
+1076,2024-09-27,Acme Corp,West,Office Supplies,Stapler,60,15.00,900.00,270.00
+1077,2024-10-01,Beta Ltd,North,Furniture,Office Chair,14,350.00,4900.00,735.00
+1078,2024-10-04,Gamma Inc,South,Electronics,Headphones,40,200.00,8000.00,2000.00
+1079,2024-10-08,Delta Co,East,Clothing,Casual Shoes,24,95.00,2280.00,456.00
+1080,2024-10-11,Epsilon LLC,West,Electronics,Laptop Pro,10,1200.00,12000.00,2400.00
+1081,2024-10-15,Zeta Corp,North,Office Supplies,Paper Ream,80,8.00,640.00,192.00
+1082,2024-10-18,Eta Ltd,South,Furniture,Standing Desk,9,750.00,6750.00,1012.50
+1083,2024-10-22,Theta Inc,East,Electronics,Smartphone X,21,800.00,16800.00,3360.00
+1084,2024-10-25,Iota Co,West,Clothing,Winter Jacket,16,120.00,1920.00,384.00
+1085,2024-10-29,Kappa LLC,North,Electronics,Tablet Z,13,600.00,7800.00,1560.00
+1086,2024-11-01,Lambda Corp,South,Office Supplies,Desk Organizer,35,45.00,1575.00,472.50
+1087,2024-11-05,Mu Ltd,East,Furniture,Bookshelf,18,180.00,3240.00,648.00
+1088,2024-11-08,Nu Inc,West,Electronics,Headphones,45,200.00,9000.00,2250.00
+1089,2024-11-12,Xi Co,North,Clothing,Business Suit,13,280.00,3640.00,728.00
+1090,2024-11-15,Omicron LLC,South,Electronics,Laptop Pro,11,1200.00,13200.00,2640.00
+1091,2024-11-19,Pi Corp,East,Office Supplies,Printer Ink,55,30.00,1650.00,495.00
+1092,2024-11-22,Rho Ltd,West,Furniture,Office Chair,16,350.00,5600.00,840.00
+1093,2024-11-26,Sigma Inc,North,Electronics,Smartphone X,23,800.00,18400.00,3680.00
+1094,2024-11-29,Tau Co,South,Clothing,Summer Dress,26,85.00,2210.00,442.00
+1095,2024-12-03,Upsilon LLC,East,Electronics,Tablet Z,14,600.00,8400.00,1680.00
+1096,2024-12-06,Phi Corp,West,Office Supplies,Stapler,70,15.00,1050.00,315.00
+1097,2024-12-10,Chi Ltd,North,Furniture,Standing Desk,10,750.00,7500.00,1125.00
+1098,2024-12-13,Psi Inc,South,Electronics,Headphones,50,200.00,10000.00,2500.00
+1099,2024-12-17,Omega Co,East,Clothing,Casual Shoes,28,95.00,2660.00,532.00
+1100,2024-12-20,Alpha LLC,West,Electronics,Laptop Pro,12,1200.00,14400.00,2880.00
