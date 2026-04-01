@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sales Dashboard – Power BI Style</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  </head>
+  <body>
+
+    <!-- ── Sidebar ────────────────────────────────────────────────────── -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <span class="logo-icon">📊</span>
+          Sales Analytics
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Analytics</div>
+        <div class="nav-item active">
+          <span class="nav-icon">🏠</span> Overview
+        </div>
+        <div class="nav-item">
+          <span class="nav-icon">📈</span> Sales Trends
+        </div>
+        <div class="nav-item">
+          <span class="nav-icon">🛒</span> Products
+        </div>
+        <div class="nav-item">
+          <span class="nav-icon">👥</span> Customers
+        </div>
+
+        <div class="nav-section-title" style="margin-top:12px">Reports</div>
+        <div class="nav-item">
+          <span class="nav-icon">🗂️</span> Regional Report
+        </div>
+        <div class="nav-item">
+          <span class="nav-icon">💰</span> Profit Analysis
+        </div>
+        <div class="nav-item">
+          <span class="nav-icon">📋</span> Data Export
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">Sales Dashboard v1.0</div>
+    </aside>
+
+    <!-- ── Main ───────────────────────────────────────────────────────── -->
+    <div class="main">
+
+      <!-- Header -->
+      <header class="header">
+        <div>
+          <div class="header-title">Sales Overview Dashboard</div>
+        </div>
+        <div class="header-actions">
+          <div class="filter-bar">
+            <select class="filter-select" id="filterYear">
+              <option value="">All Years</option>
+            </select>
+            <select class="filter-select" id="filterRegion">
+              <option value="">All Regions</option>
+            </select>
+            <select class="filter-select" id="filterCategory">
+              <option value="">All Categories</option>
+            </select>
+          </div>
+          <button class="btn btn-outline" id="btnExport">⬇ Export CSV</button>
+          <button class="btn btn-primary">🔄 Refresh</button>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="dashboard-body">
+
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+
+          <div class="kpi-card">
+            <div class="kpi-label">Total Revenue</div>
+            <div class="kpi-value" id="kpiRevenue">–</div>
+            <div class="kpi-change up">▲ vs prior period</div>
+            <span class="kpi-icon">💵</span>
+          </div>
+
+          <div class="kpi-card success">
+            <div class="kpi-label">Total Profit</div>
+            <div class="kpi-value" id="kpiProfit">–</div>
+            <div class="kpi-change up" id="kpiProfitMargin">–</div>
+            <span class="kpi-icon">📈</span>
+          </div>
+
+          <div class="kpi-card accent">
+            <div class="kpi-label">Total Orders</div>
+            <div class="kpi-value" id="kpiOrders">–</div>
+            <div class="kpi-change up">▲ order volume</div>
+            <span class="kpi-icon">🛒</span>
+          </div>
+
+          <div class="kpi-card danger">
+            <div class="kpi-label">Avg Order Value</div>
+            <div class="kpi-value" id="kpiAvgOrder">–</div>
+            <div class="kpi-change up">▲ per transaction</div>
+            <span class="kpi-icon">🎯</span>
+          </div>
+
+        </div><!-- /kpi-grid -->
+
+        <!-- Monthly trend + Category doughnut -->
+        <div class="charts-grid">
+
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div>
+                <div class="chart-card-title">Monthly Revenue &amp; Profit Trend</div>
+                <div class="chart-card-subtitle">Full year performance by month</div>
+              </div>
+              <span class="chart-badge">Line Chart</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="chartMonthlySales" height="100"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div>
+                <div class="chart-card-title">Revenue by Category</div>
+                <div class="chart-card-subtitle">Share of total revenue</div>
+              </div>
+              <span class="chart-badge">Doughnut</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="chartCategory" height="200"></canvas>
+            </div>
+          </div>
+
+        </div><!-- /charts-grid -->
+
+        <!-- Regional Bar + Top Products + Profit Radar -->
+        <div class="charts-grid-3">
+
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div>
+                <div class="chart-card-title">Sales by Region</div>
+                <div class="chart-card-subtitle">Revenue &amp; profit per region</div>
+              </div>
+              <span class="chart-badge">Bar Chart</span>
+            </div>
+            <canvas id="chartRegion" height="180"></canvas>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div>
+                <div class="chart-card-title">Top Products</div>
+                <div class="chart-card-subtitle">By total revenue</div>
+              </div>
+              <span class="chart-badge">Bar Chart</span>
+            </div>
+            <canvas id="chartTopProducts" height="180"></canvas>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div>
+                <div class="chart-card-title">Profit Margin</div>
+                <div class="chart-card-subtitle">Margin % by category</div>
+              </div>
+              <span class="chart-badge">Radar</span>
+            </div>
+            <canvas id="chartProfitMargin" height="180"></canvas>
+          </div>
+
+        </div><!-- /charts-grid-3 -->
+
+        <!-- Category Performance Table -->
+        <div class="table-card">
+          <div class="table-header">
+            <div class="table-title">Category Performance Summary</div>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Revenue</th>
+                <th>Profit</th>
+                <th>Units Sold</th>
+                <th>Revenue Share</th>
+                <th>Profit Margin</th>
+              </tr>
+            </thead>
+            <tbody id="categoryTableBody">
+              <tr><td colspan="6" style="text-align:center;padding:20px;color:#999">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Top Customers Table -->
+        <div class="table-card">
+          <div class="table-header">
+            <div class="table-title">Top Customers by Revenue</div>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Customer</th>
+                <th>Region</th>
+                <th>Orders</th>
+                <th>Revenue</th>
+                <th>Profit</th>
+                <th>Margin</th>
+              </tr>
+            </thead>
+            <tbody id="customerTableBody">
+              <tr><td colspan="7" style="text-align:center;padding:20px;color:#999">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div><!-- /dashboard-body -->
+    </div><!-- /main -->
+
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>
