@@ -340,14 +340,14 @@ function renderDebtSchedule(m) {
   html += row('sec-row', 'TERM LOAN A', yr);
   html += row('sub-row', 'Opening Balance', tlaOpen.map(v => `${fmtCr(v)} Cr`));
   html += row('indent-row', 'Mandatory Amortisation', tlaAmort.map(v => dashOrFmt(v, v => `(${INR(v)} Cr)`)));
-  html += row('indent-row', 'Voluntary Cash Sweep', tlaSweep.map(v => dashOrFmt(v, v => zeroBlank(v === 0 ? 0 : v))));
+  html += row('indent-row', 'Voluntary Cash Sweep', tlaSweep.map(v => dashOrFmt(v, v => zeroBlank(v))));
   html += row('sub-row', 'Closing Balance', tlaClos.map(v => `<strong>${fmtCr(v)} Cr</strong>`));
 
   // TLB
   html += row('sec-row', 'TERM LOAN B', yr);
   html += row('sub-row', 'Opening Balance', tlbOpen.map(v => `${fmtCr(v)} Cr`));
   html += row('indent-row', 'Mandatory Amortisation', tlbAmort.map(v => dashOrFmt(v, v => `(${INR(v)} Cr)`)));
-  html += row('indent-row', 'Voluntary Cash Sweep', tlbSweep.map(v => dashOrFmt(v, v => zeroBlank(v === 0 ? 0 : v))));
+  html += row('indent-row', 'Voluntary Cash Sweep', tlbSweep.map(v => dashOrFmt(v, v => zeroBlank(v))));
   html += row('indent-row', 'RCF Draw (cash shortfall)', tlbRCF.map(v => dashOrFmt(v, v => v === 0 ? '<span class="muted">—</span>' : `<span class="neg">${fmtCr(v)} Cr</span>`)));
   html += row('sub-row', 'Closing Balance', tlbClos.map(v => `<strong>${fmtCr(v)} Cr</strong>`));
 
