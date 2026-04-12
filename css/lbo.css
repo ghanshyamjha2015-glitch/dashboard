@@ -1,0 +1,581 @@
+/* ── LBO Model Styles ── */
+
+/* ── Layout ───────────────────────────────────────────────────────────────── */
+.lbo-body {
+  padding: 20px;
+  overflow-y: auto;
+  height: calc(100vh - 64px);
+}
+
+/* ── Company Profile Banner ───────────────────────────────────────────────── */
+.company-profile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: linear-gradient(135deg, #1e3a5f 0%, #1565c0 100%);
+  color: white;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 16px rgba(21, 101, 192, 0.3);
+}
+
+.company-logo-circle {
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.company-info { flex: 1; }
+.company-info h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+.company-info .subtitle {
+  font-size: 13px;
+  opacity: 0.85;
+  margin-bottom: 10px;
+}
+.company-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.company-tag {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.disclaimer-badge {
+  background: rgba(255, 193, 7, 0.25);
+  border: 1px solid rgba(255, 193, 7, 0.5);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 11px;
+  text-align: center;
+  line-height: 1.5;
+  flex-shrink: 0;
+  max-width: 200px;
+}
+
+/* ── KPI Cards (overrides) ────────────────────────────────────────────────── */
+.lbo-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.lbo-kpi-card {
+  background: white;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e8eaf0;
+  position: relative;
+  overflow: hidden;
+}
+
+.lbo-kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--primary, #0078d4);
+}
+
+.lbo-kpi-card.green::before  { background: #059669; }
+.lbo-kpi-card.navy::before   { background: #1e3a5f; }
+.lbo-kpi-card.orange::before { background: #ea580c; }
+.lbo-kpi-card.purple::before { background: #7c3aed; }
+
+.lbo-kpi-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.lbo-kpi-value {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 3px;
+}
+
+.lbo-kpi-sub {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+/* ── Two / Three Column Grid ──────────────────────────────────────────────── */
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.three-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+/* ── Cards ────────────────────────────────────────────────────────────────── */
+.lbo-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e8eaf0;
+}
+
+.lbo-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e3a5f;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e8eaf0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lbo-card-title .badge {
+  font-size: 10px;
+  font-weight: 600;
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 2px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ── Assumption Inputs ────────────────────────────────────────────────────── */
+.input-section-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #6b7280;
+  margin: 14px 0 6px 0;
+}
+
+.input-section-title:first-child { margin-top: 0; }
+
+.input-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid #f3f4f6;
+  gap: 8px;
+}
+
+.input-row:last-child { border-bottom: none; }
+
+.input-label {
+  font-size: 12.5px;
+  color: #374151;
+  flex: 1;
+}
+
+.input-field {
+  width: 90px;
+  text-align: right;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 13px;
+  font-family: 'Courier New', monospace;
+  color: #1e40af;
+  background: #eff6ff;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background: #dbeafe;
+}
+
+.input-unit {
+  font-size: 11px;
+  color: #9ca3af;
+  width: 28px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* Multi-year input row */
+.multi-input-row {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+}
+
+.year-input-wrap { text-align: center; }
+
+.mini-input {
+  width: 44px;
+  text-align: center;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 4px 3px;
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+  color: #1e40af;
+  background: #eff6ff;
+  display: block;
+}
+
+.mini-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background: #dbeafe;
+}
+
+.mini-year-label {
+  font-size: 10px;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+
+/* ── Sources & Uses Table ─────────────────────────────────────────────────── */
+.su-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.su-table th {
+  background: #1e3a5f;
+  color: white;
+  padding: 8px 12px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.su-table th.r { text-align: right; }
+
+.su-table td {
+  padding: 7px 12px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #374151;
+}
+
+.su-table .sec-header td {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #6b7280;
+  background: #f9fafb;
+  padding: 9px 12px 4px;
+  border-bottom: none;
+}
+
+.su-table .total-row td {
+  font-weight: 700;
+  background: #eff6ff;
+  border-top: 2px solid #3b82f6;
+  border-bottom: 2px solid #3b82f6;
+  color: #1e3a5f;
+}
+
+.r { text-align: right; }
+.mono { font-family: 'Courier New', monospace; font-size: 12px; }
+.pct-col { color: #6b7280; font-size: 12px; }
+
+/* ── Financial Tables ─────────────────────────────────────────────────────── */
+.fin-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.fin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  min-width: 700px;
+}
+
+.fin-table th {
+  background: #1e3a5f;
+  color: white;
+  padding: 9px 12px;
+  text-align: right;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.fin-table th:first-child { text-align: left; min-width: 200px; }
+.fin-table th.yr-col { min-width: 90px; }
+
+.fin-table td {
+  padding: 6px 12px;
+  border-bottom: 1px solid #f3f4f6;
+  text-align: right;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.fin-table td:first-child {
+  text-align: left;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 12.5px;
+  color: #374151;
+}
+
+/* Row variants */
+.fin-table tr.sec-row td {
+  background: #f0f4ff;
+  font-weight: 700;
+  color: #1e3a5f;
+  border-top: 1px solid #c7d2fe;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.fin-table tr.sub-row td:first-child { padding-left: 20px; }
+
+.fin-table tr.indent-row td:first-child {
+  padding-left: 36px;
+  color: #6b7280;
+}
+
+.fin-table tr.total-row td {
+  font-weight: 700;
+  background: #eff6ff;
+  border-top: 2px solid #3b82f6;
+  border-bottom: 2px solid #3b82f6;
+  color: #1e3a5f;
+}
+
+.fin-table tr.highlight-row td {
+  background: #fefce8;
+  font-weight: 600;
+  color: #78350f;
+}
+
+.fin-table tr.divider td { border-top: 1px solid #e5e7eb; }
+
+.fin-table tr:not(.sec-row):not(.total-row):not(.highlight-row):hover td {
+  background: #f9fafb;
+}
+
+.neg { color: #dc2626 !important; }
+.pos { color: #059669 !important; }
+.muted { color: #9ca3af !important; }
+
+/* Year 0 (entry/actual) column shading */
+.fin-table .yr0 { background: rgba(30, 58, 95, 0.04); }
+
+/* ── Returns Summary ──────────────────────────────────────────────────────── */
+.returns-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.return-card {
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.return-card.blue {
+  background: linear-gradient(135deg, #1e3a5f, #2563eb);
+  color: white;
+}
+
+.return-card.green {
+  background: linear-gradient(135deg, #065f46, #059669);
+  color: white;
+}
+
+.return-card.orange {
+  background: linear-gradient(135deg, #92400e, #ea580c);
+  color: white;
+}
+
+.return-card.purple {
+  background: linear-gradient(135deg, #4c1d95, #7c3aed);
+  color: white;
+}
+
+.return-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  opacity: 0.8;
+  margin-bottom: 8px;
+}
+
+.return-value {
+  font-size: 30px;
+  font-weight: 900;
+  margin-bottom: 4px;
+  line-height: 1;
+}
+
+.return-sub {
+  font-size: 11px;
+  opacity: 0.75;
+}
+
+/* ── Sensitivity Table ────────────────────────────────────────────────────── */
+.sens-wrap { overflow-x: auto; }
+
+.sens-table {
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+
+.sens-table th {
+  background: #1e3a5f;
+  color: white;
+  padding: 8px 18px;
+  text-align: center;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sens-table th.corner-th {
+  background: #0d2744;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  text-align: center;
+}
+
+.sens-table td {
+  padding: 9px 18px;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  border: 1px solid #e5e7eb;
+  font-size: 13px;
+  transition: filter 0.1s;
+}
+
+.sens-table td.row-label {
+  font-family: "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #1e3a5f;
+  background: #f0f4ff;
+  text-align: right;
+  padding-right: 14px;
+  white-space: nowrap;
+}
+
+/* IRR heat map */
+.irr-ex  { background: #064e3b; color: #a7f3d0; }  /* > 25% */
+.irr-hi  { background: #065f46; color: white; }      /* 20–25% */
+.irr-ok  { background: #d1fae5; color: #064e3b; }   /* 15–20% */
+.irr-fair{ background: #fef9c3; color: #713f12; }   /* 10–15% */
+.irr-low { background: #fee2e2; color: #7f1d1d; }   /* < 10%  */
+
+.irr-base-cell {
+  box-shadow: inset 0 0 0 3px #2563eb;
+}
+
+/* ── Charts ───────────────────────────────────────────────────────────────── */
+.charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.lbo-chart-card {
+  background: white;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e8eaf0;
+}
+
+.lbo-chart-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e3a5f;
+  margin-bottom: 4px;
+}
+
+.lbo-chart-sub {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-bottom: 12px;
+}
+
+/* ── Investment Thesis ────────────────────────────────────────────────────── */
+.thesis-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.thesis-item {
+  background: #f0f4ff;
+  border-radius: 8px;
+  padding: 11px 13px;
+  border-left: 3px solid #3b82f6;
+}
+
+.thesis-item h4 {
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  color: #1e3a5f;
+}
+
+.thesis-item p {
+  font-size: 11px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* ── Section wrapper ──────────────────────────────────────────────────────── */
+.section-mb { margin-bottom: 20px; }
+
+/* ── Override sidebar nav for LBO ─────────────────────────────────────────── */
+.nav-item.nav-lbo { color: #93c5fd; }
+.nav-item.nav-lbo.active { background: rgba(59, 130, 246, 0.25); color: #93c5fd; }
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .lbo-kpi-grid { grid-template-columns: repeat(3, 1fr); }
+  .three-col-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 900px) {
+  .two-col-grid,
+  .charts-row,
+  .three-col-grid { grid-template-columns: 1fr; }
+  .lbo-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .returns-grid { grid-template-columns: repeat(2, 1fr); }
+  .thesis-grid  { grid-template-columns: 1fr 1fr; }
+}
