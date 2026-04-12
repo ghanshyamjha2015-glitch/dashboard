@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LBO Model – Medanta Hospital</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/lbo.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  </head>
+  <body>
+
+    <!-- ── Sidebar ────────────────────────────────────────────────────────── -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <span class="logo-icon">🏥</span>
+          LBO Model
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Sections</div>
+        <a class="nav-item active" href="#section-overview" style="text-decoration:none;color:inherit">
+          <span class="nav-icon">📊</span> Overview
+        </a>
+        <a class="nav-item" href="#section-assumptions" style="text-decoration:none;color:inherit">
+          <span class="nav-icon">⚙️</span> Assumptions
+        </a>
+        <a class="nav-item" href="#section-opmodel" style="text-decoration:none;color:inherit">
+          <span class="nav-icon">📈</span> Operating Model
+        </a>
+        <a class="nav-item" href="#section-debt" style="text-decoration:none;color:inherit">
+          <span class="nav-icon">🏦</span> Debt Schedule
+        </a>
+        <a class="nav-item" href="#section-returns" style="text-decoration:none;color:inherit">
+          <span class="nav-icon">💰</span> Returns
+        </a>
+        <a class="nav-item" href="#section-sensitivity" style="text-decoration:none;color:inherit">
+          <span class="nav-icon">🎯</span> Sensitivity
+        </a>
+
+        <div class="nav-section-title" style="margin-top:14px">Navigation</div>
+        <a class="nav-item" href="index.html" style="text-decoration:none;color:inherit">
+          <span class="nav-icon">🏠</span> Sales Dashboard
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">LBO Model v1.0</div>
+    </aside>
+
+    <!-- ── Main ───────────────────────────────────────────────────────────── -->
+    <div class="main">
+
+      <!-- Header -->
+      <header class="header">
+        <div>
+          <div class="header-title">LBO Model — Medanta Hospital (Global Health Ltd)</div>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-outline" id="btnReset">↺ Reset to Defaults</button>
+          <a href="index.html" class="btn btn-primary" style="text-decoration:none">← Sales Dashboard</a>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="dashboard-body lbo-body">
+
+        <!-- ── Company Profile ───────────────────────────────────────────── -->
+        <div class="company-profile" id="section-overview">
+          <div class="company-logo-circle">🏥</div>
+          <div class="company-info">
+            <h2>Medanta — The Medicity (Global Health Ltd)</h2>
+            <p class="subtitle">
+              NSE: MEDANTA &nbsp;|&nbsp; FY2024 Revenue: ₹3,614 Cr &nbsp;|&nbsp;
+              FY2024 EBITDA: ₹831 Cr (23.0% margin) &nbsp;|&nbsp; Founded: 2009
+            </p>
+            <div class="company-tags">
+              <span class="company-tag">🏥 7 Hospitals</span>
+              <span class="company-tag">🛏 2,623 Beds</span>
+              <span class="company-tag">🌏 North India Leader</span>
+              <span class="company-tag">🤖 Robotics &amp; AI</span>
+              <span class="company-tag">📍 Gurugram · Lucknow · Patna · Ranchi · Indore</span>
+            </div>
+          </div>
+          <div class="disclaimer-badge">
+            ⚠️ Illustrative model only.<br>
+            Not investment advice.<br>
+            Figures based on public data.
+          </div>
+        </div>
+
+        <!-- ── KPI Summary ───────────────────────────────────────────────── -->
+        <div class="lbo-kpi-grid">
+          <div class="lbo-kpi-card">
+            <div class="lbo-kpi-label">Entry EV</div>
+            <div class="lbo-kpi-value" id="kpiEntryEV">—</div>
+            <div class="lbo-kpi-sub">Enterprise Value at close</div>
+          </div>
+          <div class="lbo-kpi-card navy">
+            <div class="lbo-kpi-label">Total Debt</div>
+            <div class="lbo-kpi-value" id="kpiDebt">—</div>
+            <div class="lbo-kpi-sub">TLA + TLB at close</div>
+          </div>
+          <div class="lbo-kpi-card">
+            <div class="lbo-kpi-label">Sponsor Equity</div>
+            <div class="lbo-kpi-value" id="kpiEquity">—</div>
+            <div class="lbo-kpi-sub">Initial PE equity cheque</div>
+          </div>
+          <div class="lbo-kpi-card orange">
+            <div class="lbo-kpi-label">Leverage</div>
+            <div class="lbo-kpi-value" id="kpiLeverage">—</div>
+            <div class="lbo-kpi-sub">Debt / Entry EBITDA</div>
+          </div>
+          <div class="lbo-kpi-card green">
+            <div class="lbo-kpi-label">IRR (Base)</div>
+            <div class="lbo-kpi-value" id="kpiExitIRR">—</div>
+            <div class="lbo-kpi-sub" id="kpiMOIC">— MOIC</div>
+          </div>
+        </div>
+
+        <!-- ── Assumptions + Sources & Uses ─────────────────────────────── -->
+        <div class="two-col-grid" id="section-assumptions">
+
+          <!-- Left: Assumptions -->
+          <div class="lbo-card">
+            <div class="lbo-card-title">⚙️ Model Assumptions <span class="badge">Editable</span></div>
+
+            <!-- Company -->
+            <div class="input-section-title">Company — FY2024 Base</div>
+            <div class="input-row">
+              <span class="input-label">LTM Revenue (₹ Cr)</span>
+              <input class="input-field" type="number" id="inpBaseRevenue" step="1" min="0" />
+              <span class="input-unit">Cr</span>
+            </div>
+            <div class="input-row">
+              <span class="input-label">LTM EBITDA Margin</span>
+              <input class="input-field" type="number" id="inpBaseMargin" step="0.5" min="0" />
+              <span class="input-unit">%</span>
+            </div>
+            <div class="input-row">
+              <span class="input-label">Existing Net Debt</span>
+              <input class="input-field" type="number" id="inpExistingDebt" step="1" min="0" />
+              <span class="input-unit">Cr</span>
+            </div>
+
+            <!-- Transaction -->
+            <div class="input-section-title">Transaction</div>
+            <div class="input-row">
+              <span class="input-label">Entry EV / EBITDA</span>
+              <input class="input-field" type="number" id="inpEntryMultiple" step="0.5" min="1" />
+              <span class="input-unit">x</span>
+            </div>
+            <div class="input-row">
+              <span class="input-label">Transaction Fees</span>
+              <input class="input-field" type="number" id="inpTxFees" step="0.1" min="0" />
+              <span class="input-unit">%</span>
+            </div>
+
+            <!-- Financing -->
+            <div class="input-section-title">Debt Financing</div>
+            <div class="input-row">
+              <span class="input-label">TLA Amount (₹ Cr)</span>
+              <input class="input-field" type="number" id="inpTLAAmount" step="100" min="0" />
+              <span class="input-unit">Cr</span>
+            </div>
+            <div class="input-row">
+              <span class="input-label">TLA Interest Rate</span>
+              <input class="input-field" type="number" id="inpTLARate" step="0.25" min="0" />
+              <span class="input-unit">%</span>
+            </div>
+            <div class="input-row">
+              <span class="input-label">TLA Annual Amort.</span>
+              <input class="input-field" type="number" id="inpTLAAmort" step="1" min="0" />
+              <span class="input-unit">%</span>
+            </div>
+            <div class="input-row">
+              <span class="input-label">TLB Amount (₹ Cr)</span>
+              <input class="input-field" type="number" id="inpTLBAmount" step="100" min="0" />
+              <span class="input-unit">Cr</span>
+            </div>
+            <div class="input-row">
+              <span class="input-label">TLB Interest Rate</span>
+              <input class="input-field" type="number" id="inpTLBRate" step="0.25" min="0" />
+              <span class="input-unit">%</span>
+            </div>
+            <div class="input-row">
+              <span class="input-label">TLB Annual Amort.</span>
+              <input class="input-field" type="number" id="inpTLBAmort" step="1" min="0" />
+              <span class="input-unit">%</span>
+            </div>
+
+            <!-- Operating projections -->
+            <div class="input-section-title">Revenue Growth % (Year 1 → 5)</div>
+            <div class="input-row">
+              <span class="input-label">Annual Growth</span>
+              <div class="multi-input-row">
+                <div class="year-input-wrap">
+                  <input class="mini-input" type="number" id="inpRevGrowth0" step="1" />
+                  <div class="mini-year-label">Y1</div>
+                </div>
+                <div class="year-input-wrap">
+                  <input class="mini-input" type="number" id="inpRevGrowth1" step="1" />
+                  <div class="mini-year-label">Y2</div>
+                </div>
+                <div class="year-input-wrap">
+                  <input class="mini-input" type="number" id="inpRevGrowth2" step="1" />
+                  <div class="mini-year-label">Y3</div>
+                </div>
+                <div class="year-input-wrap">
+                  <input class="mini-input" type="number" id="inpRevGrowth3" step="1" />
+                  <div class="mini-year-label">Y4</div>
+                </div>
+                <div class="year-input-wrap">
+                  <input class="mini-input" type="number" id="inpRevGrowth4" step="1" />
+                  <div class="mini-year-label">Y5</div>
+                </div>
+              </div>
+              <span class="input-unit">%</span>
+            </div>
+
+            <div class="input-section-title">EBITDA Margin % (Year 1 → 5)</div>
+            <div class="input-row">
+              <span class="input-label">Margin</span>
+              <div class="multi-input-row">
+                <div class="year-input-wrap">
+                  <input class="mini-input" type="number" id="inpEBITDA0" step="0.5" />
+                  <div class="mini-year-label">Y1</div>
+                </div>
+                <div class="year-input-wrap">
+                  <input class="mini-input" type="number" id="inpEBITDA1" step="0.5" />
+                  <div class="mini-year-label">Y2</div>
+                </div>
+                <div class="year-input-wrap">
+                  <input class="mini-input" type="number" id="inpEBITDA2" step="0.5" />
+                  <div class="mini-year-label">Y3</div>
+                </div>
+                <div class="year-input-wrap">
+                  <input class="mini-input" type="number" id="inpEBITDA3" step="0.5" />
+                  <div class="mini-year-label">Y4</div>
+                </div>
+                <div class="year-input-wrap">
+                  <input class="mini-input" type="number" id="inpEBITDA4" step="0.5" />
+                  <div class="mini-year-label">Y5</div>
+                </div>
+              </div>
+              <span class="input-unit">%</span>
+            </div>
+
+            <div class="input-section-title">Capex % Revenue (Year 1 → 5)</div>
+            <div class="input-row">
+              <span class="input-label">Capex / Revenue</span>
+              <div class="multi-input-row">
+                <div class="year-input-wrap">
+                  <input class="mini-input" type="number" id="inpCapex0" step="0.5" />
+                  <div class="mini-year-label">Y1</div>
+                </div>
+                <div class="year-input-wrap">
+                  <input class="mini-input" type="number" id="inpCapex1" step="0.5" />
+                  <div class="mini-year-label">Y2</div>
+                </div>
+                <div class="year-input-wrap">
+                  <input class="mini-input" type="number" id="inpCapex2" step="0.5" />
+                  <div class="mini-year-label">Y3</div>
+                </div>
+                <div class="year-input-wrap">
+                  <input class="mini-input" type="number" id="inpCapex3" step="0.5" />
+                  <div class="mini-year-label">Y4</div>
+                </div>
+                <div class="year-input-wrap">
+                  <input class="mini-input" type="number" id="inpCapex4" step="0.5" />
+                  <div class="mini-year-label">Y5</div>
+                </div>
+              </div>
+              <span class="input-unit">%</span>
+            </div>
+
+            <!-- Other operating -->
+            <div class="input-section-title">Other Operating &amp; Exit</div>
+            <div class="input-row">
+              <span class="input-label">ΔWC as % of ΔRevenue</span>
+              <input class="input-field" type="number" id="inpWCPct" step="0.5" min="0" />
+              <span class="input-unit">%</span>
+            </div>
+            <div class="input-row">
+              <span class="input-label">Corporate Tax Rate</span>
+              <input class="input-field" type="number" id="inpTaxRate" step="1" min="0" />
+              <span class="input-unit">%</span>
+            </div>
+            <div class="input-row">
+              <span class="input-label">Exit Year</span>
+              <input class="input-field" type="number" id="inpExitYear" step="1" min="1" max="5" />
+              <span class="input-unit">yr</span>
+            </div>
+            <div class="input-row">
+              <span class="input-label">Exit EV / EBITDA</span>
+              <input class="input-field" type="number" id="inpExitMultiple" step="0.5" min="1" />
+              <span class="input-unit">x</span>
+            </div>
+          </div>
+
+          <!-- Right: Sources & Uses + Investment Thesis -->
+          <div style="display:flex;flex-direction:column;gap:18px">
+
+            <!-- Sources & Uses -->
+            <div class="lbo-card">
+              <div class="lbo-card-title">💼 Sources &amp; Uses of Funds</div>
+              <table class="su-table">
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th class="r">Amount (₹ Cr)</th>
+                    <th class="r">% of Total</th>
+                  </tr>
+                </thead>
+                <tbody id="tbSU">
+                  <tr><td colspan="3" style="text-align:center;padding:20px;color:#999">Loading…</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Returns Summary (small) -->
+            <div class="lbo-card">
+              <div class="lbo-card-title">🎯 Exit &amp; Returns Summary</div>
+              <table class="su-table">
+                <tbody>
+                  <tr>
+                    <td>Exit Year</td>
+                    <td class="r mono" id="retExitYearVal">—</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Exit EV/EBITDA</td>
+                    <td class="r mono" id="retExitMultipleVal">—</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Exit EBITDA Margin</td>
+                    <td class="r mono" id="retExitMargin">—</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Exit Enterprise Value</td>
+                    <td class="r mono" id="retExitEV">—</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Less: Exit Net Debt</td>
+                    <td class="r mono neg" id="retExitDebt">—</td>
+                    <td></td>
+                  </tr>
+                  <tr class="total-row">
+                    <td><strong>Exit Equity Value</strong></td>
+                    <td class="r mono pos"><strong id="retExitEq">—</strong></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Entry Equity (Sponsor)</td>
+                    <td class="r mono" id="retEntryEq">—</td>
+                    <td></td>
+                  </tr>
+                  <tr class="total-row">
+                    <td><strong>MOIC</strong></td>
+                    <td class="r mono pos"><strong id="retMOIC">—</strong></td>
+                    <td></td>
+                  </tr>
+                  <tr class="total-row">
+                    <td><strong>IRR</strong></td>
+                    <td class="r mono pos"><strong id="retIRR">—</strong></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Revenue CAGR</td>
+                    <td class="r mono" id="retRevCAGR">—</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Investment Thesis -->
+            <div class="lbo-card">
+              <div class="lbo-card-title">🔑 Investment Thesis</div>
+              <div class="thesis-grid">
+                <div class="thesis-item">
+                  <h4>India Healthcare Growth</h4>
+                  <p>Healthcare spend growing 15–18% p.a., underpenetrated vs global peers; rising insurance coverage</p>
+                </div>
+                <div class="thesis-item">
+                  <h4>Premium Brand Moat</h4>
+                  <p>Medanta recognised as North India's top quaternary care provider with strong physician ecosystem</p>
+                </div>
+                <div class="thesis-item">
+                  <h4>Capacity Expansion</h4>
+                  <p>1,000+ new beds planned across Tier-1 &amp; Tier-2 cities; greenfield + brownfield pipeline</p>
+                </div>
+                <div class="thesis-item">
+                  <h4>Margin Expansion</h4>
+                  <p>Operating leverage as occupancy rises; premium procedure mix shift towards oncology, cardiac &amp; neuro</p>
+                </div>
+                <div class="thesis-item">
+                  <h4>Technology Edge</h4>
+                  <p>Robotics, AI-assisted diagnostics &amp; digital health positioning vs regional competitors</p>
+                </div>
+                <div class="thesis-item">
+                  <h4>Exit Optionality</h4>
+                  <p>IPO, strategic sale or secondary to global healthcare PE at sustained premium multiple</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div><!-- /two-col-grid -->
+
+        <!-- ── Operating Model ───────────────────────────────────────────── -->
+        <div class="lbo-card section-mb" id="section-opmodel">
+          <div class="lbo-card-title">📈 Operating Model &amp; Projections (₹ Crore)</div>
+          <div class="fin-table-wrap">
+            <table class="fin-table">
+              <thead>
+                <tr>
+                  <th>Line Item</th>
+                  <th class="yr0 yr-col">FY2024A</th>
+                  <th class="yr-col">FY2025E</th>
+                  <th class="yr-col">FY2026E</th>
+                  <th class="yr-col">FY2027E</th>
+                  <th class="yr-col">FY2028E</th>
+                  <th class="yr-col">FY2029E</th>
+                </tr>
+              </thead>
+              <tbody id="tbOpModel">
+                <tr><td colspan="7" style="text-align:center;padding:24px;color:#999">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ── Debt Schedule ──────────────────────────────────────────────── -->
+        <div class="lbo-card section-mb" id="section-debt">
+          <div class="lbo-card-title">🏦 Debt Schedule (₹ Crore)</div>
+          <div class="fin-table-wrap">
+            <table class="fin-table">
+              <thead>
+                <tr>
+                  <th>Line Item</th>
+                  <th class="yr0 yr-col">FY2024A</th>
+                  <th class="yr-col">FY2025E</th>
+                  <th class="yr-col">FY2026E</th>
+                  <th class="yr-col">FY2027E</th>
+                  <th class="yr-col">FY2028E</th>
+                  <th class="yr-col">FY2029E</th>
+                </tr>
+              </thead>
+              <tbody id="tbDebt">
+                <tr><td colspan="7" style="text-align:center;padding:24px;color:#999">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ── Charts ────────────────────────────────────────────────────── -->
+        <div class="charts-row">
+
+          <div class="lbo-chart-card">
+            <div class="lbo-chart-title">Revenue &amp; EBITDA Growth</div>
+            <div class="lbo-chart-sub">Annual revenue and EBITDA (₹ Cr) with margin % overlay</div>
+            <canvas id="chartRevEBITDA" height="160"></canvas>
+          </div>
+
+          <div class="lbo-chart-card">
+            <div class="lbo-chart-title">Debt Paydown Waterfall</div>
+            <div class="lbo-chart-sub">TLA and TLB closing balances year-over-year</div>
+            <canvas id="chartDebtPaydown" height="160"></canvas>
+          </div>
+
+        </div><!-- /charts-row -->
+
+        <div class="charts-row">
+
+          <div class="lbo-chart-card">
+            <div class="lbo-chart-title">Free Cash Flow vs. Mandatory Debt Amortisation</div>
+            <div class="lbo-chart-sub">FCF (pre-amortisation) vs. mandatory annual debt repayment (₹ Cr)</div>
+            <canvas id="chartFCF" height="160"></canvas>
+          </div>
+
+          <!-- Returns cards -->
+          <div>
+            <div style="margin-bottom:12px;font-size:14px;font-weight:700;color:#1e3a5f" id="section-returns">
+              💰 Returns Analysis
+            </div>
+            <div class="returns-grid">
+              <div class="return-card blue">
+                <div class="return-label">IRR</div>
+                <div class="return-value" id="kpiExitIRR2">—</div>
+                <div class="return-sub">Levered equity IRR</div>
+              </div>
+              <div class="return-card green">
+                <div class="return-label">MOIC</div>
+                <div class="return-value" id="kpiMOIC2">—</div>
+                <div class="return-sub">Money-on-money</div>
+              </div>
+              <div class="return-card orange">
+                <div class="return-label">Exit EV</div>
+                <div class="return-value" style="font-size:18px" id="kpiExitEV2">—</div>
+                <div class="return-sub">Enterprise Value</div>
+              </div>
+              <div class="return-card purple">
+                <div class="return-label">Rev CAGR</div>
+                <div class="return-value" id="kpiRevCAGR2">—</div>
+                <div class="return-sub">5-year revenue CAGR</div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /charts-row -->
+
+        <!-- ── Sensitivity Analysis ──────────────────────────────────────── -->
+        <div class="lbo-card section-mb" id="section-sensitivity">
+          <div class="lbo-card-title">
+            🎯 IRR Sensitivity Analysis
+            <span class="badge">Entry Multiple vs Exit Multiple</span>
+          </div>
+          <p style="font-size:12px;color:#6b7280;margin-bottom:14px">
+            Base-case cell is highlighted with a blue border.
+            All other operating assumptions held constant.
+          </p>
+          <div class="sens-wrap" id="sensTbl">
+            <p style="color:#999;text-align:center;padding:20px">Loading…</p>
+          </div>
+          <div style="display:flex;gap:12px;margin-top:14px;flex-wrap:wrap;font-size:11px">
+            <span><span style="display:inline-block;width:14px;height:14px;background:#064e3b;border-radius:3px;vertical-align:middle;margin-right:4px"></span>&gt; 25% — Excellent</span>
+            <span><span style="display:inline-block;width:14px;height:14px;background:#065f46;border-radius:3px;vertical-align:middle;margin-right:4px"></span>20–25% — Strong</span>
+            <span><span style="display:inline-block;width:14px;height:14px;background:#d1fae5;border:1px solid #ccc;border-radius:3px;vertical-align:middle;margin-right:4px"></span>15–20% — Acceptable</span>
+            <span><span style="display:inline-block;width:14px;height:14px;background:#fef9c3;border:1px solid #ccc;border-radius:3px;vertical-align:middle;margin-right:4px"></span>10–15% — Marginal</span>
+            <span><span style="display:inline-block;width:14px;height:14px;background:#fee2e2;border:1px solid #ccc;border-radius:3px;vertical-align:middle;margin-right:4px"></span>&lt; 10% — Insufficient</span>
+          </div>
+        </div>
+
+      </div><!-- /dashboard-body -->
+    </div><!-- /main -->
+
+    <script src="js/lbo.js"></script>
+
+  </body>
+</html>
